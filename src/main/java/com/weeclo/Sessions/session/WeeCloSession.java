@@ -1,8 +1,8 @@
 package com.weeclo.Sessions.session;
 
 //import com.weeclo.demo.entities.UserEntity;
-//import com.weeclo.demo.session.certificate.Certificate;
-//import com.weeclo.demo.session.sessionPojos.LoggedIn;
+//import com.weeclo.Sessions.session.certificate.Certificate;
+//import com.weeclo.Sessions.session.sessionPojos.LoggedIn;
 
 import com.weeclo.Sessions.session.certificate.Certificate;
 import com.weeclo.Sessions.session.sessionPojos.LoggedIn;
@@ -38,6 +38,9 @@ public class WeeCloSession implements HttpSession,Serializable{
         //getServletContext()
     }
     public WeeCloSession(){
+
+    }
+    public WeeCloSession(UserEntity userEntity){
 
     }
     public void setLoggedIn(UserEntity userEntity){

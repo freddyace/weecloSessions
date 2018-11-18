@@ -1,27 +1,20 @@
 package com.weeclo.Sessions.response;
 
 public class WeeCloSessionCreationSuccessResponse {
-    String message = "Weeclo Session creation successful.";
-    Long successTime = System.currentTimeMillis();
+    private String message = "Weeclo Session creation successful.";
+    private Long successTime;
 
     public WeeCloSessionCreationSuccessResponse(){
-
+        this.successTime = System.currentTimeMillis();
     }
 
     public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+        return this.message;
     }
 
     public Long getSuccessTime() {
-        return successTime;
+        return this.successTime;
     }
 
-    public void setSuccessTime(Long successTime) {
-        this.successTime = successTime;
-    }
 
 }

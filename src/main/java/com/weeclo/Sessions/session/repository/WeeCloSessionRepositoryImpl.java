@@ -5,6 +5,7 @@ import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Repository
@@ -19,7 +20,20 @@ public class WeeCloSessionRepositoryImpl implements WeeCloSessionRepository {
     }
     @Override
     public void save(WeeCloSession weeCloSession) {
-        hashOperations.put("SESSION", weeCloSession.getId(), weeCloSession);
+        //Looking for the session by the ownerID
+//        hashOperations.put("SESSION", weeCloSession.getCertificate().getOwnerID(), weeCloSession);
+        //Can probably use this if you want to use the token instead..since the token # is saved as the weeCloSessionID
+        HashMap<String, WeeCloSession> hashMap = new HashMap();
+        System.out.println("OWNER ID: "+weeCloSession.getCertificate().getOwnerID());
+        System.out.println("TOKEN ID: "+weeCloSession.getCertificate().getToken().getID());
+        hashMap.put(weeCloSession.getCertificate().getOwnerID(), weeCloSession);
+        hashMap.put(weeCloSession.getCertificate().getToken().getID(), weeCloSession);
+//        hashOperations.put("SESSION", weeCloSession.getCertificate().getOwnerID(), weeCloSession);
+          hashOperations.putAll("SESSION", hashMap);
+    }
+
+    public WeeCloSession findByTokenID(String token){
+        return (WeeCloSession) hashOperations.get("SESSION", token);
     }
 
     @Override

@@ -1,7 +1,9 @@
 package com.weeclo.Sessions.session.certificate;
 
+//import com.weeclo.Sessions.session.token.Token;
+
 import com.weeclo.Sessions.session.token.Token;
-//import com.weeclo.demo.session.token.Token;
+import entities.UserEntity;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -24,6 +26,13 @@ public class Certificate implements Serializable{
 
     public Certificate(){
         this.uniqueIdentificationNumber = UUID.randomUUID().toString();
+    }
+
+    public Certificate(UserEntity userEntity){
+        this.ownerID = Integer.toString(userEntity.getId());
+        this.ownerFirstName = userEntity.getFirstName();
+        this.ownerLastName = userEntity.getLastName();
+        this.token = new Token(true);
     }
 
     public void setUniqueIdentificationNumber(String uniqueIdentificationNumber) {
