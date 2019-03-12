@@ -27,7 +27,7 @@ public class WeeCloSessionRepositoryImpl implements WeeCloSessionRepository {
         System.out.println("OWNER ID: "+weeCloSession.getCertificate().getOwnerID());
         System.out.println("TOKEN ID: "+weeCloSession.getCertificate().getToken().getID());
         hashMap.put(weeCloSession.getCertificate().getOwnerID(), weeCloSession);
-        hashMap.put(weeCloSession.getCertificate().getToken().getID(), weeCloSession);
+//        hashMap.put(weeCloSession.getCertificate().getToken().getID(), weeCloSession);
 //        hashOperations.put("SESSION", weeCloSession.getCertificate().getOwnerID(), weeCloSession);
           hashOperations.putAll("SESSION", hashMap);
     }

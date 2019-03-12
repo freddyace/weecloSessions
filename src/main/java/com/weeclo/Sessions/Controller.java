@@ -44,6 +44,7 @@ public class Controller {
 //            WeeCloSession weeCloSession = new WeeCloSession(new Certificate());
             weeCloSessionRepository.save(weeCloSession);
             WeeCloSessionCreationSuccessResponse weeCloSessionCreationSuccessResponse = new WeeCloSessionCreationSuccessResponse();
+            weeCloSessionCreationSuccessResponse.setToken(weeCloSession.getCertificate().getToken());
             ResponseEntity responseEntity = new ResponseEntity(weeCloSessionCreationSuccessResponse, HttpStatus.OK);
             log.info("**********************Exiting postSession**********************");
             return responseEntity;
